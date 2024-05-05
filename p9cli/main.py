@@ -20,11 +20,10 @@ def cli():
               default=None)
 def plot(command, file):
     if file:
-        if file.read(1) in '{[':
-            file.seek(0)
-            df = pd.DataFrame(json.loads(file.read()))
-        else:
+        try:
             df = pd.read_csv(file)
+        except Exception as _:
+            df = pd.DataFrame(json.loads(file.read()))
     p = eval(f"({command})", locals(), globals())
     p.save(filename=sys.stdout,format="png")
 
