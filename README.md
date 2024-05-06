@@ -18,4 +18,4 @@ Display in command line:
 
 CSV or JSON data from stdin:
 
-`cat data.csv | p9 plot 'ggplot(df, ...)`
+`cat data.csv | p9 plot -f - 'ggplot(df, ...)`
